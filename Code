@@ -1,0 +1,55 @@
+import pandas as pd
+import nltk
+from nltk.corpus import stopwords
+from nltk.stem import WordNetLemmatizer
+from textblob import TextBlob
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Load the dataset
+df = pd.read_csv("covid19_tweets.csv")
+
+# Clean and preprocess the text
+stop_words = stopwords.words("english")
+lemmatizer = WordNetLemmatizer()
+
+def preprocess_text(text):
+    # Remove punctuation and special characters
+    text = text.replace("[^a-zA-Z0-9\s]", "")
+    # Convert text to lowercase
+    text = text.lower()
+    # Tokenize the text
+    tokens = nltk.word_tokenize(text)
+    # Remove stop words
+    tokens = [token for token in tokens if token not in stop_words]
+    # Lemmatize the tokens
+    tokens = [lemmatizer.lemmatize(token) for token in tokens]
+    # Join the tokens back into text
+    text = " ".join(tokens)
+    return text
+
+df["text"] = df["text"].apply(preprocess_text)
+
+# Perform sentiment analysis
+def get_sentiment(text):
+    return TextBlob(text).sentiment.polarity
+
+df["sentiment_score"] = df["text"].apply(get_sentiment)
+
+# Classify tweets as positive, negative, or neutral
+def get_sentiment_category(score):
+    if score > 0:
+        return "Positive"
+    elif score < 0:
+        return "Negative"
+    else:
+        return "Neutral"
+
+df["sentiment_category"] = df["sentiment_score"].apply(get_sentiment_category)
+
+# Visualize the sentiment analysis results
+sns.countplot(x="sentiment_category", data=df)
+plt.title("Sentiment Analysis of COVID-19 Tweets")
+plt.xlabel("Sentiment Category")
+plt.ylabel("Count")
+plt.show()
