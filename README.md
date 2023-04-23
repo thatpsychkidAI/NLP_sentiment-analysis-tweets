@@ -3,7 +3,8 @@
 # Description: 
 This project aims to perform sentiment analysis on tweets related to COVID-19 using Natural Language Processing techniques in Python.
 
-# Dataset: The dataset used in this project is the COVID-19 Twitter dataset available on Kaggle, which contains tweets related to COVID-19 from January to July 2020. https://www.kaggle.com/datasets/gpreda/covid19-tweets
+# Dataset: 
+The dataset used in this project is the COVID-19 Twitter dataset available on Kaggle, which contains tweets related to COVID-19 from January to July 2020. https://www.kaggle.com/datasets/gpreda/covid19-tweets
 
 # Process:
 1.Data Cleaning and Preprocessing: The first step in this project is to clean and preprocess the dataset using Python libraries such as NLTK and Pandas. This involves removing stop words, stemming or lemmatizing the text, and converting the text to lowercase.
