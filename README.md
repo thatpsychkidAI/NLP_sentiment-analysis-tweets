@@ -8,7 +8,9 @@ The dataset used in this project is the COVID-19 Twitter dataset available on Ka
 
 # Process:
 1.Data Cleaning and Preprocessing: The first step in this project is to clean and preprocess the dataset using Python libraries such as NLTK and Pandas. This involves removing stop words, stemming or lemmatizing the text, and converting the text to lowercase.
+
 2. Sentiment Analysis: Next, we will perform sentiment analysis on the preprocessed data using Python libraries such as NLTK and TextBlob. We will classify the tweets as positive, negative, or neutral based on their sentiment scores.
+
 3. Visualization: Finally, we will visualize the sentiment analysis results using Python libraries such as Matplotlib and Seaborn to gain insights into the overall sentiment of the tweets.
 
 # Conclusion:
